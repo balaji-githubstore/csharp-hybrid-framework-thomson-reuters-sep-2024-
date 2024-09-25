@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThomsonReuters.MedicalRecordAutomation.Base;
+using ThomsonReuters.MedicalRecordAutomation.Utilities;
 
 namespace ThomsonReuters.MedicalRecordAutomation
 {
     public class LoginTest : AutomationWrapper
     {
         [Test]
-        [TestCase("admin", "pass", "OpenEMR")]
-        [TestCase("accountant", "accountant", "OpenEMR")]
+        [TestCaseSource(typeof(DataSource), nameof(DataSource.ValidLoginData))]
         public void ValidLoginTest(string username, string password, string expectedValue)
         {
             driver.FindElement(By.Id("authUser")).SendKeys(username);
