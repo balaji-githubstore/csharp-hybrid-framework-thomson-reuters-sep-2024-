@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ThomsonReuters.MedicalRecordAutomation.Utilities
 {
+    /// <summary>
+    /// Class dedicated to keep all the test data required for the test methods.
+    /// Create all testcase source static method to keep the test data
+    /// </summary>
     public class DataSource
     {
         /// <summary>
@@ -29,5 +33,7 @@ namespace ThomsonReuters.MedicalRecordAutomation.Utilities
             finalData[1] = dataSet2;
             return finalData;
         }
+
+
     }
 }

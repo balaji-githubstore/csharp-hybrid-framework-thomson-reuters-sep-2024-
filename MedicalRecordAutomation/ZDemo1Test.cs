@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClosedXML.Excel;
 
 namespace MedicalRecordAutomation
 {
-/// <summary>
-/// Will be deleted
-/// </summary>
+    /// <summary>
+    /// Will be deleted
+    /// </summary>
     public class ZDemo1Test
     {
 
@@ -35,21 +36,47 @@ namespace MedicalRecordAutomation
             dataSet4[1] = "bala123";
 
             //size - number of test case
-            object[] finalData=new object[4];
+            object[] finalData = new object[4];
             finalData[0] = dataSet1;
             finalData[1] = dataSet2;
-            finalData[2] = dataSet3;   
+            finalData[2] = dataSet3;
             finalData[3] = dataSet4;
 
             return finalData;
-           
+
         }
 
         [Test]
         [TestCaseSource(nameof(ValidData))]
-        public void ValidTest(string username,string password)
+        public void ValidTest(string username, string password)
         {
-            Console.WriteLine("hello"+username+password);
+            Console.WriteLine("hello" + username + password);
         }
+
+
+        /// <summary>
+        /// Will be deleted. Just for understanding excel read
+        /// </summary>
+        [Test]
+        public void ReadExcelTest()
+        {
+            var book = new XLWorkbook(@"C:\Mine\Company\Thomson Reuters Sep 2024\AutomationFrameworkSolution\MedicalRecordAutomation\TestData\openemr_data.xlsx");
+            var sheet = book.Worksheet("ValidLoginTest");
+            var range = sheet.RangeUsed();
+
+            for (int r = 2; r <= 3; r++)
+            {
+                for (int c = 1; c <= 3; c++)
+                {
+                    string value = range.Cell(r, c).GetString();
+                    Console.WriteLine(value);
+                }
+            }
+            //need to work - adding all the values to object[]
+
+            book.Dispose();
+        }
+
+
     }
 }
