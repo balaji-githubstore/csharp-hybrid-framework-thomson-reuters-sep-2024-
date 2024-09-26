@@ -9,6 +9,12 @@ namespace ThomsonReuters.MedicalRecordAutomation.Utilities
 {
     public class ExcelSource
     {
+        /// <summary>
+        /// Convert the given excel file and sheet into object[]
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="sheetname"></param>
+        /// <returns>object[]</returns>
         public static object[] GetSheetIntoObjectArray(string file, string sheetname)
         {
             var book = new XLWorkbook(file);
@@ -22,6 +28,7 @@ namespace ThomsonReuters.MedicalRecordAutomation.Utilities
 
             for (int r = 2; r <= rowCount; r++)
             {
+                //size - number of arguments/columncount
                 string[] dataSet = new string[cellCount];
 
                 for (int c = 1; c <= cellCount; c++)

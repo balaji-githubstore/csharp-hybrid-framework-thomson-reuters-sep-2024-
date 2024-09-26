@@ -13,7 +13,7 @@ namespace ThomsonReuters.MedicalRecordAutomation
     public class LoginTest : AutomationWrapper
     {
         [Test]
-        [TestCaseSource(typeof(DataSource), nameof(DataSource.ValidLoginData))]
+        [TestCaseSource(typeof(DataSource), nameof(DataSource.ValidLoginDataExcel))]
         public void ValidLoginTest(string username, string password, string expectedValue)
         {
             driver.FindElement(By.Id("authUser")).SendKeys(username);

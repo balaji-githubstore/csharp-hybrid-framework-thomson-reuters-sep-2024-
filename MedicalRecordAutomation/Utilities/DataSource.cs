@@ -34,6 +34,14 @@ namespace ThomsonReuters.MedicalRecordAutomation.Utilities
             return finalData;
         }
 
+        public static object[] ValidLoginDataExcel()
+        {
+            object[] finalData=ExcelSource.GetSheetIntoObjectArray
+                (@"C:\Mine\Company\Thomson Reuters Sep 2024\AutomationFrameworkSolution\MedicalRecordAutomation\TestData\openemr_data.xlsx", "ValidLoginTest");
+            
+            return finalData;
+        }
+
 
     }
 }
