@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace ThomsonReuters.MedicalRecordAutomation.Pages
 {
-    /// <summary>
-    /// All common elements like menu, profile which gets displayed on all pages 
-    /// will be handled here
-    /// </summary>
-    public class MainPage
+    public class AcknowledgmentsPage
     {
         private IWebDriver driver;
 
-        public MainPage(IWebDriver driver)
+        public AcknowledgmentsPage(IWebDriver driver)
         {
             this.driver = driver;
         }

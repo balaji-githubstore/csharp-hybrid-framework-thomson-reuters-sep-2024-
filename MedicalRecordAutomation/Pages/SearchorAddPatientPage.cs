@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,11 @@ namespace ThomsonReuters.MedicalRecordAutomation.Pages
 {
     public class SearchorAddPatientPage
     {
+        private IWebDriver driver;
+
+        public SearchorAddPatientPage(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
     }
 }

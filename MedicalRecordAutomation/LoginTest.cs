@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ThomsonReuters.MedicalRecordAutomation.Base;
 using ThomsonReuters.MedicalRecordAutomation.Utilities;
+using ThomsonReuters.MedicalRecordAutomation.Pages;
 
 namespace ThomsonReuters.MedicalRecordAutomation
 {
@@ -16,9 +17,10 @@ namespace ThomsonReuters.MedicalRecordAutomation
         [TestCaseSource(typeof(DataSource), nameof(DataSource.ValidLoginDataExcel))]
         public void ValidLoginTest(string username, string password, string expectedValue)
         {
-            driver.FindElement(By.Id("authUser")).SendKeys(username);
-            driver.FindElement(By.CssSelector("#clearPass")).SendKeys(password);
-            driver.FindElement(By.Id("login-button")).Click();
+            LoginPage login = new LoginPage(driver);
+            login.EnterUsername(username);
+            login.EnterPassword(password);
+            login.ClickOnLogin();
 
             //Assert the title  - OpenEMR
             Assert.That(driver.Title, Is.EqualTo(expectedValue));
@@ -29,12 +31,13 @@ namespace ThomsonReuters.MedicalRecordAutomation
         [TestCase("saul", "saul234", "Invalid username or password")]
         public void InvalidLoginTest(string username, string password, string expectedError)
         {
-            driver.FindElement(By.Id("authUser")).SendKeys(username);
-            driver.FindElement(By.CssSelector("#clearPass")).SendKeys(password);
-            driver.FindElement(By.Id("login-button")).Click();
+            LoginPage login = new LoginPage(driver);
+            login.EnterUsername(username);
+            login.EnterPassword(password);
+            login.ClickOnLogin();
 
             //Assert the error - Invalid username or password
-            string actualError = driver.FindElement(By.XPath("//p[contains(text(),'Invalid')]")).Text;
+            string actualError = login.GetInvalidErrorMessage();
             Assert.That(actualError.Contains(expectedError)); //expect true
         }
     }
