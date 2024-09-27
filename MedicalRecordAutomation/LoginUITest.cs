@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThomsonReuters.MedicalRecordAutomation.Base;
+using ThomsonReuters.MedicalRecordAutomation.Pages;
 
 namespace ThomsonReuters.MedicalRecordAutomation
 {
@@ -27,6 +28,14 @@ namespace ThomsonReuters.MedicalRecordAutomation
             //Assert the text --> "The most popular open-source Electronic Health Record and Medical Practice Management solution."
             string actualDescription = driver.FindElement(By.XPath("//p[contains(text(),'most')]")).Text;
             Assert.That(actualDescription, Is.EqualTo("The most popular open-source Electronic Health Record and Medical Practice Management solution."));
+        }
+
+        [Test]
+        public void PlaceholderTest()
+        {
+            LoginPage login = new LoginPage(driver);
+            Assert.That(login.GetUsernamePlaceholder(), Is.EqualTo("Username"));
+            Assert.That(login.GetPasswordPlaceholder(), Is.EqualTo("Password"));
         }
     }
 }

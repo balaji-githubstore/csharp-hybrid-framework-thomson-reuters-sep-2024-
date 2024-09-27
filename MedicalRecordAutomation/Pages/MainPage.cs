@@ -13,6 +13,9 @@ namespace ThomsonReuters.MedicalRecordAutomation.Pages
     /// </summary>
     public class MainPage
     {
+        private By patientMenuLocator = By.XPath("//div[text()='Patient']");
+        private By newSearchMenuLocator = By.XPath("//div[text()='New/Search']");
+
         private IWebDriver driver;
 
         public MainPage(IWebDriver driver)
@@ -25,9 +28,14 @@ namespace ThomsonReuters.MedicalRecordAutomation.Pages
             return driver.Title;
         }
 
-        public void ClickOnpatientMenu()
+        public void ClickOnPatientMenu()
         {
+            driver.FindElement(patientMenuLocator).Click();
+        }
 
+        public void ClickOnNewSearchMenu()
+        {
+            driver.FindElement(newSearchMenuLocator).Click();
         }
     }
 }

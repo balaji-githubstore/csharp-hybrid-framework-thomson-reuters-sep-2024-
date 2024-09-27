@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace ThomsonReuters.MedicalRecordAutomation.Pages
 {
-    public class LoginPage
+    public class LoginPage 
     {
+        private By usernameLocator = By.Id("authUser");
+        private By passwordLocator = By.CssSelector("#clearPass");
+        private By loginLocator = By.Id("login-button");
+        private By errorLocator = By.XPath("//p[contains(text(),'Invalid')]");
+
         private IWebDriver driver;
 
         public LoginPage(IWebDriver driver)
@@ -19,25 +24,34 @@ namespace ThomsonReuters.MedicalRecordAutomation.Pages
 
         public void EnterUsername(string username)
         {
-            driver.FindElement(By.Id("authUser")).SendKeys(username);
+            driver.FindElement(usernameLocator).SendKeys(username);
         }
 
         public void EnterPassword(string password)
         {
-            driver.FindElement(By.CssSelector("#clearPass")).SendKeys(password);
+            driver.FindElement(passwordLocator).SendKeys(password);
         }
 
         public void ClickOnLogin()
         {
-            driver.FindElement(By.Id("login-button")).Click();
+            driver.FindElement(loginLocator).Click();
         }
 
         //GetInvalidErrorMessage()
         public string GetInvalidErrorMessage()
         {
-            return driver.FindElement(By.XPath("//p[contains(text(),'Invalid')]")).Text;
+            return driver.FindElement(errorLocator).Text;
         }
 
+        public string GetUsernamePlaceholder()
+        {
+            return driver.FindElement(usernameLocator).GetAttribute("placeholder");
+        }
+
+        public string GetPasswordPlaceholder()
+        {
+            return driver.FindElement(passwordLocator).GetAttribute("placeholder");
+        }
 
         //SelectLanguage()
         //ClickOnAckLicCert()
