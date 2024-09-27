@@ -19,5 +19,15 @@ namespace ThomsonReuters.MedicalRecordAutomation.Pages
         {
             this.driver = driver;
         }
+
+        public string GetMainPageTitle()
+        {
+            return driver.Title;
+        }
+
+        public void ClickOnpatientMenu()
+        {
+
+        }
     }
 }

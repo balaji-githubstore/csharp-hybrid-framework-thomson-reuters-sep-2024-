@@ -23,7 +23,8 @@ namespace ThomsonReuters.MedicalRecordAutomation
             login.ClickOnLogin();
 
             //Assert the title  - OpenEMR
-            Assert.That(driver.Title, Is.EqualTo(expectedValue));
+            MainPage main = new MainPage(driver);
+            Assert.That(main.GetMainPageTitle(), Is.EqualTo(expectedValue));
         }
 
         [Test]
