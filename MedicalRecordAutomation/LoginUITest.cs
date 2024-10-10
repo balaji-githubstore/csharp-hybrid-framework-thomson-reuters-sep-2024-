@@ -19,7 +19,7 @@ namespace ThomsonReuters.MedicalRecordAutomation
         public void TitleTest()
         {
             string actualTitle = driver.Title;
-            Assert.That(actualTitle, Is.EqualTo("OpenEMR Login"));
+            Assert.That(actualTitle, Is.EqualTo("OpenEMR Login6"));
         }
 
         [Test]
