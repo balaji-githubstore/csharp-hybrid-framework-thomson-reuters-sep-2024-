@@ -39,5 +39,7 @@ namespace ThomsonReuters.MedicalRecordAutomation.Pages
         {
             driver.FindElement(newSearchMenuLocator).Click();
         }
+
+        
     }
 }

@@ -35,5 +35,16 @@ namespace MedicalRecordAutomation.Base
         {
             return driver.FindElement(locator).GetAttribute(attributeName);
         }
+        public void SwitchToWindowByTitle(string title)
+        {
+            foreach (string window in driver.WindowHandles)
+            {
+                driver.SwitchTo().Window(window);
+                if (driver.Title.Equals(title))
+                {
+                    break;
+                }
+            }
+        }
     }
 }
