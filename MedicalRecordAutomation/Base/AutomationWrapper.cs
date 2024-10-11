@@ -27,9 +27,9 @@ namespace ThomsonReuters.MedicalRecordAutomation.Base
             {
                 projectPath = TestContext.CurrentContext.TestDirectory;
                 projectPath = projectPath.Remove(projectPath.IndexOf("bin"));
-      
 
-                var reporter = new ExtentSparkReporter(projectPath+ @"\Reports\spark.html");
+
+                var reporter = new ExtentSparkReporter(projectPath + @"\Reports\spark.html");
                 extent = new ExtentReports();
                 extent.AttachReporter(reporter);
             }
@@ -69,9 +69,8 @@ namespace ThomsonReuters.MedicalRecordAutomation.Base
 
                 test.Log(Status.Fail, stackTrace + errorMessage);
 
-               Screenshot sc= driver.TakeScreenshot();
-
-                test.AddScreenCaptureFromBase64String(sc.AsBase64EncodedString, testName+" failed");
+                Screenshot sc = driver.TakeScreenshot();
+                test.AddScreenCaptureFromBase64String(sc.AsBase64EncodedString, testName + " failed");
 
             }
             else if (status == TestStatus.Passed)
